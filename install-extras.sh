@@ -66,18 +66,6 @@ else
   echo "Skipping git settings configuration"
 fi
 
-# Install R packages: run r-pkg-install.R
-
-echo "Install R dependencies (R packages)? ([y]/n)"
-read -r install_deps
-install_deps=${install_deps:-y}
-
-if [ "$install_deps" == "y" ]; then
-    Rscript r-pkgs-install.R
-else
-    echo "Skipping R package installation"
-fi
-
 # Install RStudio preferences
 
 echo "Install recommended RStudio preferences? ([y]/n)"
@@ -94,8 +82,17 @@ else
     echo "Skipping RStudio preferences installation"
 fi
 
+# Install R packages: run r-pkg-install.R
+
+echo "Install R dependencies (R packages)? ([y]/n)"
+read -r install_deps
+install_deps=${install_deps:-y}
+
+if [ "$install_deps" == "y" ]; then
+    Rscript r-pkgs-install.R
+else
+    echo "Skipping R package installation"
+fi
+
 echo "Script completed"
-
-
-
 

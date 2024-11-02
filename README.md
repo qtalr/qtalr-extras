@@ -1,21 +1,31 @@
 # Extras
 
-## Linux
+This repository contains a set of resources to compliment the qtalr-\* docker containers. However, the resources can be used independently of the containers.
 
-- [ ] run `apt-get update` and `apt-get upgrade`
+## Usage
 
-## Git/GitHub
+To use the resources, clone the repository and then run the `./install-extras.sh` script.
 
-- [ ] setup git config
-  - [ ] user.name and user.email
-  - [ ] setup SSH keys for GitHub
+```bash
+git clone https://github.com/qtalr/qtalr-extras.git
+cd qtalr-extras
+./install-extras.sh
+```
 
-## R dependencies
+## What does the script do?
 
-- [ ] install R packages from `dependencies.txt` file with {pak}.
-- [ ] install `tinytext` through {tinytex} (check if it is already installed)
+The script will prompt you to:
 
-## RStudio
+- install system dependencies
+  - runs `apt-get update` and `apt-get upgrade`
+- setup git configuration
+  - git user name and user email
+  - ssh key (to add to GitHub)
+- install RStudio preferences
+  - copies a custom `rstudio-prefs.json` file to the RStudio configuration directory
+  - adds a `.Rprofile` and `.Renviron` file to the user's home directory
+- install R packages
+  - installs packages and versions used in the book and recipes
+- remove the cloned repository
 
-- [ ] copy `rstudio-prefs.json` to `~/.config/rstudio` (Linux)
-- [ ] set up default working directory `~/Workspace` in RStudio
+You can choose to skip any of the steps.

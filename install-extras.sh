@@ -25,6 +25,9 @@ if [ "$proceed" == "n" ]; then
     exit 0
 fi
 
+echo "Updating and upgrading your system"
+sudo apt update && sudo apt upgrade -y
+
 # Prompt user to configure git settings
 # user.name and user.email
 

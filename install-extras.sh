@@ -94,5 +94,20 @@ else
     echo "Skipping R package installation"
 fi
 
+# Clean up
+echo "Would you like to remove the extras scripts? (y/[n])"
+read -r remove_scripts
+remove_scripts=${remove_scripts:-n}
+
+if [ "$remove_scripts" == "y" ]; then
+    # add pwd to basename to remove path
+    extras=$(basename "$(pwd)")
+    cd ..
+    rm -rf "$extras"
+    echo "Scripts removed"
+else
+    echo "Scripts not removed"
+fi
+
 echo "Script completed"
 

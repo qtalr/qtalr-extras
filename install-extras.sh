@@ -19,6 +19,7 @@ echo "  - RStudio preferences"
 
 echo "Do you want to proceed? ([y]/n)"
 read -r proceed
+proceed=${proceed:-y}
 
 if [ "$proceed" == "n" ]; then
     echo "Exiting script"
@@ -33,6 +34,7 @@ sudo apt update && sudo apt upgrade -y
 
 echo "Would you like to configure git settings? ([y]/n)"
 read -r git_settings
+git_settings=${git_settings:-y}
 
 if [ "$git_settings" == "y" ]; then
     echo "Enter your git user.name: "
@@ -45,6 +47,7 @@ if [ "$git_settings" == "y" ]; then
 
     echo "Would you like to set up SSH keys for GitHub? ([y]/n)"
     read -r ssh_keys
+    ssh_keys=${ssh_keys:-y}
 
     if [ "$ssh_keys" == "y" ]; then
         ssh-keygen -t rsa -b 4096 -C "$git_email"
@@ -67,6 +70,7 @@ fi
 
 echo "Install R dependencies (R packages)? ([y]/n)"
 read -r install_deps
+install_deps=${install_deps:-y}
 
 if [ "$install_deps" == "y" ]; then
     Rscript r-pkgs-install.R
@@ -78,6 +82,7 @@ fi
 
 echo "Install recommended RStudio preferences? ([y]/n)"
 read -r install_prefs
+install_prefs=${install_prefs:-y}
 
 if [ "$install_prefs" == "y" ]; then
     cp -v ./.Rprofile ~/.Rprofile
